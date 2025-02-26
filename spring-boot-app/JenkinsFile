@@ -19,6 +19,16 @@ pipeline {
         sh 'cd spring-boot-app && mvn clean package'
       }
     }
+    stage('SCA - Dependency Check') {
+        steps {
+            sh 'mvn dependency-check:check'
+        }
+        post {
+            success {
+                dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+            }
+        }
+    }
     stage('Static Code Analysis') {
       environment {
         SONAR_URL = "http://3.147.58.218:9000"
