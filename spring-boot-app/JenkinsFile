@@ -64,7 +64,7 @@ pipeline {
             withCredentials([string(credentialsId: 'tokenjenkinsnovo', variable: 'GITHUB_TOKEN')]) {
                 sh '''
                     git config user.email "augustocsar22@gmail.com"
-                    git config user.name "Cesar Augusto"
+                    git config user.name "cesaraugusto0"
                     BUILD_NUMBER=${BUILD_NUMBER}
                     sed -i -e "s/ultimate-cicd.*/ultimate-cicd:${BUILD_NUMBER}/g"  spring-boot-app-manifests/deployment.yml
                     git add spring-boot-app-manifests/deployment.yml
